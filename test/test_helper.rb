@@ -7,6 +7,14 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path('../lib', __dir__)
-require 'this'
+require 'spanned'
 
 require 'minitest/autorun'
+
+def assert_string_array(strings)
+	strings.each do |i|
+		cl = i[2]&.dig(:class)
+		f = Spanned.explode i[0], span_class: cl
+		assert_equal i[1], f
+	end
+end

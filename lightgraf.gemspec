@@ -2,19 +2,19 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'this/version'
+require 'spanned/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'this'
-  spec.version       = This::VERSION
+  spec.name          = 'spanned'
+  spec.version       = Spanned::VERSION
   spec.authors       = ['Aydar N.']
   spec.email         = ['me@aydar.media']
 
   spec.required_ruby_version = '>= 2.6.3'
 
-  spec.summary       = 'Something'
-  spec.description   = 'Something'
-  spec.homepage      = 'https://rubygems.org/gems/this'
+  spec.summary       = 'Helps wrap text in spans with classes'
+  spec.description   = 'Helpful if you are adding hover events on every letter or word of text'
+  spec.homepage      = 'https://rubygems.org/gems/spanned'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.

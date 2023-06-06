@@ -6,21 +6,24 @@
 
 # frozen_string_literal: true
 
-require 'this/internal'
-
-# Contains main
+# Contains main methods
 module Spanned
 
 	class Error < StandardError; end
 
-	# Does spanned
+	# Wraps every char of text in spans
 	# == Parameters:
-	# +text+:: +String+: Text to format
-	# +format+:: Optional +Sym+: How to format output (+:plaintext+ / +:html+)
+	# +text+:: +Str+: Text to include spans in
+	# +span_class+:: Optional +Str+: class to apply to every span
 	# == Returns:
-	# +String+:: Formatted text
-	def self.fix()
-
+	# +Str+:: Formatted text
+	def self.explode(text, span_class: nil)
+		r = ''
+		open = span_class.nil? ? %(<span>) : %(<span class="#{span_class}">)
+		text.each_char do |i|
+			r += "#{open}#{i}</span>"
+		end
+		r
 	end
 
 end
