@@ -9,11 +9,11 @@
 require 'this/internal'
 
 # Contains main
-module This
+module Spanned
 
 	class Error < StandardError; end
 
-	# Does this
+	# Does spanned
 	# == Parameters:
 	# +text+:: +String+: Text to format
 	# +format+:: Optional +Sym+: How to format output (+:plaintext+ / +:html+)
