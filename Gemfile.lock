@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spanned (0.1.1.pre.beta)
+    spanned (0.1.2.pre.beta)
 
 GEM
   remote: https://rubygems.org/

@@ -20,10 +20,19 @@ module Spanned
 	# +Str+:: Formatted text
 	def self.explode(text, span_class: nil, ignore: nil)
 		r = ''
+		in_tag = false
+		leave_tag = false
 		open = span_class.nil? ? %(<span>) : %(<span class="#{span_class}">)
 		text.each_char do |i|
+			if i == '<'
+				in_tag = true
+			elsif i == '>'
+				leave_tag = true
+			elsif leave_tag
+				in_tag = leave_tag = false
+			end
 			r +=
-					if ignore&.include?(i)
+					if ignore&.include?(i) or in_tag
 						i
 					else
 						"#{open}#{i}</span>"

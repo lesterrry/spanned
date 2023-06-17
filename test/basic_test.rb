@@ -20,6 +20,16 @@ class SpannedDefaultTest < Minitest::Test
 		assert_string_array strings
 	end
 
+	def test_tags
+		strings = [
+			[
+				%(Hi <b>w</b>),
+				%(<span>H</span><span>i</span><span> </span><b><span>w</span></b>)
+			]
+		]
+		assert_string_array strings
+	end
+
 	def test_classes
 		strings = [
 			[
