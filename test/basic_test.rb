@@ -30,4 +30,15 @@ class SpannedDefaultTest < Minitest::Test
 		]
 		assert_string_array strings
 	end
+
+	def test_ignore
+		strings = [
+			[
+				%(Hi w),
+				%(<span class="a">H</span><span class="a">i</span> <span class="a">w</span>),
+				{ class: 'a', ignore: [' '] }
+			]
+		]
+		assert_string_array strings
+	end
 end

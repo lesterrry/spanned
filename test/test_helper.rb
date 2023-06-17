@@ -14,7 +14,8 @@ require 'minitest/autorun'
 def assert_string_array(strings)
 	strings.each do |i|
 		cl = i[2]&.dig(:class)
-		f = Spanned.explode i[0], span_class: cl
+		ig = i[2]&.dig(:ignore)
+		f = Spanned.explode i[0], span_class: cl, ignore: ig
 		assert_equal i[1], f
 	end
 end

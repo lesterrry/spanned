@@ -15,13 +15,19 @@ module Spanned
 	# == Parameters:
 	# +text+:: +Str+: Text to include spans in
 	# +span_class+:: Optional +Str+: class to apply to every span
+	# +ignore+:: Optional +Arr+: chars to skip
 	# == Returns:
 	# +Str+:: Formatted text
-	def self.explode(text, span_class: nil)
+	def self.explode(text, span_class: nil, ignore: nil)
 		r = ''
 		open = span_class.nil? ? %(<span>) : %(<span class="#{span_class}">)
 		text.each_char do |i|
-			r += "#{open}#{i}</span>"
+			r +=
+					if ignore&.include?(i)
+						i
+					else
+						"#{open}#{i}</span>"
+					end
 		end
 		r
 	end
